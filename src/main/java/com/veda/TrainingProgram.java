@@ -88,3 +88,4 @@ public class TrainingProgram {
                 trainingId, programName, instructor, fee, enrolledStudents.size(), capacity, status);
     }
 }
+

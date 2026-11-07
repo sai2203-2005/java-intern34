@@ -57,3 +57,4 @@ public class ServiceCategory {
                 id, name, basePrice, (active ? "Active" : "Inactive"), description);
     }
 }
+

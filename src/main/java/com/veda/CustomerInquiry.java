@@ -67,3 +67,4 @@ public class CustomerInquiry {
                 inquiryId, customerName, serviceInterested, status, email, phone);
     }
 }
+
