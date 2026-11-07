@@ -1,11 +1,11 @@
-# 🎓 Student Management System (Core Java)
+# 🏢 Veda Technologies – Java Organization Management System
 
-[![Java](https://img.shields.io/badge/Java-8%2B%20%2F%2023-orange.svg)](https://www.oracle.com/java/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Java](https://img.shields.io/badge/Java-17%2B%20%2F%2021%20%2F%2023-orange.svg)](https://www.oracle.com/java/)
 [![Build](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]()
-[![Paradigm](https://img.shields.io/badge/OOP-Collections%20%26%20Encapsulation-blueviolet.svg)]()
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Architecture](https://img.shields.io/badge/Architecture-Modular%20OOP%20%26%20Collections-blueviolet.svg)]()
 
-A modular, menu-driven console application developed in **Core Java** to manage student academic records, enrolled subjects, subject-wise marks, dynamic letter grading, and cohort-level academic performance summaries.
+A comprehensive, production-style console platform developed in **Core Java** that simulates the organizational workflow of **Veda Technologies**—managing technology offerings, corporate training courses, customer inquiries, student internships, and client service requests.
 
 ---
 
@@ -13,229 +13,166 @@ A modular, menu-driven console application developed in **Core Java** to manage 
 
 - [Overview](#-overview)
 - [System Architecture](#-system-architecture)
-- [Grading Criteria & Passing Policy](#-grading-criteria--passing-policy)
-- [Project Structure](#-project-structure)
-- [Class Responsibilities](#-class-responsibilities)
-- [Core Features](#-core-features)
-- [Technologies & Concepts Applied](#-technologies--concepts-applied)
+- [Module Breakdown & Features](#-module-breakdown--features)
+- [Project Directory Structure](#-project-directory-structure)
+- [Synthetic Sample Data](#-synthetic-sample-data)
+- [Technologies Used](#-technologies-used)
 - [How to Compile and Run](#-how-to-compile-and-run)
-- [Sample Execution Output](#-sample-execution-output)
-- [Future Enhancements Roadmap](#-future-enhancements-roadmap)
+- [Interactive Console Walkthrough](#-interactive-console-walkthrough)
+- [Future Roadmap & Database Upgrade](#-future-roadmap--database-upgrade)
 - [License](#-license)
 
 ---
 
 ## 📖 Overview
 
-The **Student Management System** is designed as a foundational software engineering project for educational tracking. It demonstrates the practical application of:
-- **Object-Oriented Programming (OOP):** Encapsulation, high cohesion, and low coupling.
-- **Java Collections Framework:** `LinkedHashMap` for fast $O(1)$ key-based lookup while preserving insertion order.
-- **Defensive Programming:** Robust input validation, subject boundary constraints ($0-100$), and duplicate checking.
+The **Veda Technologies Organization Management System** serves as an operational hub for digital services and training management. It emphasizes:
+* **Object-Oriented Design**: Clean encapsulation, separation of concerns, and domain modeling.
+* **In-Memory High-Performance Collections**: `LinkedHashMap` for fast $O(1)$ ID lookups while maintaining deterministic insertion sequence for reporting.
+* **Preloaded Synthetic Data**: Instantly operational upon launch, allowing immediate exploration of dashboards, inquiries, training rosters, and client service tickets.
 
 ---
 
 ## 🏗️ System Architecture
 
 ```
-                       ┌─────────────────────────┐
-                       │        Main.java        │
-                       │   (Menu Loop & I/O)     │
-                       └────────────┬────────────┘
-                                    │ delegates
-                                    ▼
-                       ┌─────────────────────────┐
-                       │   StudentService.java   │
-                       │ (CRUD & Summary Engine) │
-                       └────────────┬────────────┘
-                                    │ manages
-                                    ▼
-                       ┌─────────────────────────┐
-                       │      Student.java       │
-                       │  (Model, Grades & Pass) │
-                       └─────────────────────────┘
+                       ┌───────────────────────────────────┐
+                       │      VedaTechnologiesApp.java     │
+                       │     (Interactive Menu Controller) │
+                       └─────────────────┬─────────────────┘
+                                         │ delegates
+                                         ▼
+                       ┌───────────────────────────────────┐
+                       │     OrganizationService.java      │
+                       │    (Business Logic & Collections) │
+                       └─────────────────┬─────────────────┘
+                                         │ coordinates
+         ┌──────────────┬────────────────┼──────────────┬──────────────┐
+         ▼              ▼                ▼              ▼              ▼
+┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+│ServiceCategory│ │TechnologyProg│ │CustomerInq   │ │TrainingProg  │ │ServiceRequest│
+└──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘
 ```
 
 ---
 
-## 📊 Grading Criteria & Passing Policy
+## ⚡ Module Breakdown & Features
 
-### Academic Letter Grading
-
-| Average Marks Range | Letter Grade | Evaluation |
-| :---: | :---: | :--- |
-| **90.00% – 100.00%** | **A+** | Outstanding |
-| **80.00% – 89.99%**  | **A**  | Excellent |
-| **70.00% – 79.99%**  | **B**  | Very Good |
-| **60.00% – 69.99%**  | **C**  | Good |
-| **50.00% – 59.99%**  | **D**  | Satisfactory |
-| **35.00% – 49.99%**  | **E**  | Marginal Pass |
-| **Below 35.00%**     | **F**  | Needs Improvement (Fail) |
-
-### Passing Criteria:
-A student is awarded **`PASS`** status if and only if they score at least **35 marks in every enrolled subject**. If any individual subject mark falls below 35, the overall result is evaluated as **`FAIL`**, regardless of the overall average.
+| Module | Key Operations | Description |
+| :--- | :--- | :--- |
+| **1. Executive Dashboard** | Metrics & Aggregations | Live overview of total offerings, pipeline valuations, active service tickets, and training enrollments. |
+| **2. Service Categories** | Add, View, Update, Delete | Manage organizational services (e.g., Cloud & DevOps, AI Engineering, Full-Stack Development). |
+| **3. Technology Programs** | Add, View, Update, Delete | Track technical tracks, duration, and status (Active, Upcoming, Retired). |
+| **4. Customer Inquiries** | Register, View, Update Status | Capture enterprise leads and update engagement statuses (New, In Review, Converted, Closed). |
+| **5. Training Programs** | Add, View, Enroll Students | Manage corporate courses, seat capacities, course fees, and student rosters. |
+| **6. Internship Programs** | Register, View, Update Status | Track student applicants across engineering tracks and track recruitment pipelines. |
+| **7. Service Requests** | Create, View, Assign, Resolve | Client ticketing system for assigning lead engineers and resolving deliverables. |
 
 ---
 
-## 📁 Project Structure
+## 📁 Project Directory Structure
 
 ```
-StudentManagementSystem/
-│
-├── Student.java          # Model: Encapsulates ID, name, department, subjects, grades, and pass/fail logic
-├── StudentService.java   # Service: In-memory CRUD operations, ID/Name lookup, and cohort performance analytics
-└── Main.java             # Controller: Interactive console menu, input validation, and loop management
+src/main/java/com/veda/
+├── ServiceCategory.java        # Domain Model: Service definitions and base pricing
+├── TechnologyProgram.java      # Domain Model: Curriculum offerings and technical domains
+├── CustomerInquiry.java        # Domain Model: Enterprise client contact information
+├── TrainingProgram.java        # Domain Model: Training course capacities, rosters, and fees
+├── InternshipApplication.java  # Domain Model: Internship candidate pipeline
+├── ServiceRequest.java         # Domain Model: Client engineering tickets & priorities
+├── OrganizationService.java    # Service Layer: Collections storage, CRUD, and dashboard calculations
+└── VedaTechnologiesApp.java    # Main Entry Point: Menu loop, input sanitization, and navigation
 ```
 
 ---
 
-## 🔍 Class Responsibilities
+## 💾 Synthetic Sample Data
 
-### 1. `Student.java`
-* Represents an individual student record.
-* Encapsulates `studentId`, `name`, `department`, and `subjectMarks` (`Map<String, Integer>`).
-* Computes `calculateAverage()`, `calculatePercentage()`, `calculateGrade()`, and `isPassed()`.
-
-### 2. `StudentService.java`
-* Acts as the business logic service managing the `Map<Integer, Student> students` store.
-* **CRUD operations:**
-  * **Add:** Validates duplicate Student IDs.
-  * **Update:** Updates profile information and clears/replaces subject marks.
-  * **Search:** Supports lookup by both unique ID ($O(1)$) and case-insensitive Name ($O(N)$).
-  * **Delete:** Safely removes student records by ID.
-  * **Display All:** Prints individual report sheets for all students.
-  * **Performance Summary:** Computes class average, pass percentage, identifies the class topper, and tracks the lowest performer.
-
-### 3. `Main.java`
-* Interactive console controller with an 8-option menu.
-* Contains `readMarks()` to ensure marks are strictly bounded between $0$ and $100$ and prevents duplicate subject entries during enrollment.
-* Prevents Scanner input skipping traps with robust token consumption.
+The application boots with realistic enterprise seed data:
+* **Services**: Cloud & DevOps (\$4,500), Full-Stack Systems (\$6,000), Applied AI (\$7,500), Cybersecurity (\$5,000).
+* **Corporate Training**: Production Java 21, Kubernetes & Terraform with pre-enrolled students.
+* **Internship Candidates**: Real student applicant records from premier technical universities.
+* **Live Service Tickets**: In-progress client deliverables with assigned engineers.
 
 ---
 
-## ⚡ Core Features
+## 🧠 Technologies Used
 
-| Feature | Description |
-| :--- | :--- |
-| **Add Student** | Registers a new student with ID, Name, Department, and course marks. |
-| **Update Student** | Modifies an existing student's details and updates course scores. |
-| **Search by ID** | Instant $O(1)$ lookup using student ID. |
-| **Search by Name** | Case-insensitive search across student names. |
-| **Delete Student** | Removes record from system with validation. |
-| **Display All** | Tabulates all student profiles, subjects, averages, and pass/fail results. |
-| **Performance Summary** | Computes cohort analytics: class average, topper, pass percentage, and lowest performer. |
-
----
-
-## 🧠 Technologies & Concepts Applied
-
-| Concept | Application |
-| :--- | :--- |
-| **OOP & Encapsulation** | Private instance variables accessed through getters and business methods. |
-| **Map & LinkedHashMap** | Maps student IDs to student objects while preserving insertion sequence. |
-| **Collection Traversal** | Iterating over entry sets and collection values using enhanced for-loops. |
-| **Defensive I/O** | Input validation ensuring numerical score bounds ($0 \le \text{mark} \le 100$). |
-| **Separation of Concerns** | Isolated data model, business logic service, and UI controller. |
+* **Java 17+ / 21 / 23**: Modern Core Java features (switch expressions, stream reductions, string formatting).
+* **OOP Principles**: High cohesion, encapsulation, and domain model decoupling.
+* **Java Collections Framework**: `LinkedHashMap<Integer, T>` and `ArrayList<T>`.
+* **Defensive I/O**: Robust console input handling avoiding scanner skipping traps.
 
 ---
 
 ## 🚀 How to Compile and Run
 
 ### Prerequisites
-* **Java Development Kit (JDK) 8 or higher** (JDK 17, 21, or 23 recommended).
+* Java JDK 17 or higher installed.
 
-### Commands
+### Step 1: Compile all source files into the `out` directory
+```powershell
+javac -d out (Get-ChildItem -Path src/main/java/com/veda/*.java).FullName
+```
+*(On Linux/macOS: `javac -d out src/main/java/com/veda/*.java`)*
 
-1. **Compile all files:**
-   ```powershell
-   javac Student.java StudentService.java Main.java
-   ```
-
-2. **Execute the application:**
-   ```powershell
-   java Main
-   ```
-
----
-
-## 🖥️ Sample Execution Output
-
-```text
-===== STUDENT MANAGEMENT SYSTEM =====
-1. Add Student
-2. Update Student
-3. Search Student by ID
-4. Search Student by Name
-5. Delete Student
-6. Display All Students
-7. Performance Summary
-8. Exit
-
-Enter your choice: 1
-
-Enter Student ID: 101
-Enter Student Name: Rahul
-Enter Department: CSE
-Enter number of subjects: 3
-Enter subject name: Java
-Enter marks (0-100): 95
-Enter subject name: DBMS
-Enter marks (0-100): 85
-Enter subject name: Python
-Enter marks (0-100): 90
-Student added successfully!
-
-===== STUDENT MANAGEMENT SYSTEM =====
-Enter your choice: 6
-
-========== STUDENT DETAILS ==========
-Student ID: 101
-Name: Rahul
-Department: CSE
-
-Subject Marks:
-Java : 95
-DBMS : 85
-Python : 90
-
-Average: 90.00
-Percentage: 90.00%
-Grade: A+
-Result: PASS
-=====================================
-
-===== STUDENT MANAGEMENT SYSTEM =====
-Enter your choice: 7
-
-======= ACADEMIC PERFORMANCE SUMMARY =======
-Total Students: 1
-Class Average: 90.00
-Passed Students: 1
-Failed Students: 0
-Pass Percentage: 100.00%
-
-Topper: Rahul
-Highest Average: 90.00
-Lowest Performer: Rahul
-Lowest Average: 90.00
-============================================
-
-===== STUDENT MANAGEMENT SYSTEM =====
-Enter your choice: 8
-Thank you for using the system!
+### Step 2: Execute the application
+```powershell
+java -cp out com.veda.VedaTechnologiesApp
 ```
 
 ---
 
-## 🗺️ Future Enhancements Roadmap
+## 🖥️ Interactive Console Walkthrough
 
-- [ ] **Database Connectivity (JDBC + MySQL):** Persist student records to a relational database.
-- [ ] **Authentication & Security:** Add role-based authentication (Admin vs. Faculty vs. Student).
-- [ ] **PDF Report Card Export:** Generate formatted academic transcripts.
-- [ ] **GUI Front-End:** Build a modern desktop interface using JavaFX or a web dashboard with Spring Boot + React.
+### 1. Main Navigation Menu
+```text
+==========================================
+   VEDA TECHNOLOGIES
+   MANAGEMENT SYSTEM
+==========================================
+
+MAIN MENU
+
+1. Dashboard
+2. Service Categories
+3. Technology Programs
+4. Customer Inquiries
+5. Training Programs
+6. Internship Programs
+7. Service Requests
+0. Exit
+
+Enter your choice: 1
+```
+
+### 2. Live Executive Dashboard
+```text
+=======================================================
+       VEDA TECHNOLOGIES - EXECUTIVE DASHBOARD         
+=======================================================
+  Service Categories               : 4 (4 Active)
+  Technology Offerings             : 4 (3 Active)
+  Customer Inquiries               : 3 (3 Pending Action)
+  Corporate Training               : 2 Programs (5 Trainees Enrolled)
+  Internship Candidates            : 3 Applicants (1 Accepted)
+  Client Service Requests          : 3 Total (2 Active/In-Progress)
+-------------------------------------------------------
+  Active Services Pipeline Value   : $23,000.00
+  Total Training Revenue Realized  : $2,450.00
+=======================================================
+```
+
+---
+
+## 🗺️ Future Roadmap & Database Upgrade
+
+* [ ] **Phase 2 (MySQL + JDBC Connectivity):** Migrate in-memory maps to MySQL schemas with DAO classes and database connection pools.
+* [ ] **Phase 3 (Enterprise Spring Boot REST API):** Expose endpoints for customer inquiry submissions and training enrollments.
+* [ ] **Phase 4 (Frontend UI Dashboard):** React.js single-page application with real-time analytics charts and PDF export functionality.
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License - feel free to use it for learning, coursework, and internship portfolio demonstration.
-
+This project is licensed under the MIT License - feel free to use it for portfolio presentations, academic projects, and learning references.
